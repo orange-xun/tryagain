@@ -29,5 +29,19 @@ get_file.close()
 with open("e:/test/day1.py","w") as file1:
     file1.write("今天是个好日子！")
 
+#防止转义还可以在字符串前加一个r   eg:with open(r"e:\test\day1.py","w") as fil1
+# read      读文件的所有内容       read(4):表示读文件的前4个字节（此处默认值为-1）
+#readline   读取该文件的一行内容(默认为第一行,默认参数为-1)  如果重新声明参数，则表示字节数
+#readlines 读取该文件的所有内容，并且返回一个列表，每一行代表一个元素，且最后列表的最后一个元素为空
+"""
+    #注意注意！！在使用流读取文件内容的时候，如果已经有将文件中的内容全部读取完毕后，则该对象中不存在的内容，并且指针此时已经在
+    #   最后一行，所以后续读取文件的代码的结果就是空值
+"""
+
+#isdir  isfile  exists  测试文件或文件夹是否存在的三个方法：
+#isfile 只用于判断文件是否存在
+#isdir  只用于判断文件夹是否存在
+#exists 即可判断文件也可以判断文件夹
+print(os.path.exists(r"D:\pythontest\day1.txt"))
 
 
