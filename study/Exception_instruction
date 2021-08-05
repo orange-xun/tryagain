@@ -1,0 +1,43 @@
+#========异常信息说明============
+
+import sys
+#异常语句说明
+class MyException(BaseException):
+    def __init__(self,message): #重写初始化方法
+        self.message=message
+
+def device(number1,number2):
+    if number2==0:
+        #raise 表示的是抛出一个异常
+        raise MyException("除数不能为零！")
+    return number1/number2
+
+list1=[1,32,4]
+#红色的错误信息，就是一个标准的错误流，正常输出语句就是一个标准的输出流
+try:
+    print(list1[1])
+    device(1,0)
+except(AttributeError,ZeroDivisionError):
+    print("这是属性的异常和除数不能够为零的异常")
+    print(sys.exc_info()) #会抛出异常类型，异常的提示语和异常的回路信息
+except:
+    print("表示的是捕获所有类型的异常")
+    print(sys.exc_info())
+else:
+    print("有莫有抛出异常呢？")
+finally:
+    print("无论抛还是不抛异常，看看我执行不？")
+"""
+异常（Exception）：不等价于错误（Error）；错误：表示的是人为所犯的错，而异常：在实现功能开发的工程中，在满足需求存在某些异常情况
+    开发人员没有进行考虑到的情况所引发的错误称之为异常。
+说明：
+    1、所有异常类都是直接或者间接的继承BaseException；
+    2、expect后面可以指定捕获的异常类型，如果不指定则表示默认的是BaseException类，表示所有类型异常都可以进行捕获；
+    3、try中的语句从上往下执行，只要其中一个语句抛出异常，则后续语句将不执行，直接跳到except中；
+    4、try可以与多个except进行配对（类似于if...elif...），except声明的父类必须是在最后，捕获类型的关系必须是从小到大的关系；
+    5、如果try...excpet中带有else语句块的话，则不抛出异常执行完try中的所有语句后执行else语句块；如果抛出异常则不执行；
+    6、如果存在finally模块，则无论是否抛出异常都执行；
+    7、try除了与except配对存在以外，还可以单独与finally存在配对；
+    8、程序中除了存在系统异常意外还可以存在自定义异常；
+    9、使用raise关键字完成一个自定义异常的抛出；
+"""
