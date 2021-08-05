@@ -45,3 +45,23 @@ with open("e:/test/day1.py","w") as file1:
 print(os.path.exists(r"D:\pythontest\day1.txt"))
 
 
+#练习题：
+#判断E盘是否存在java目录，如果不存在则创建java目录，创建完后，将C盘某一文件复制到该目录下；如果存在该目录，则判断该目录下是否存在test.java文件；
+#   如果存在，则将该文件的第三行到第五行的内容追加到该文件的末尾
+#https://www.cnblogs.com/wangzhilong/p/11986994.html
+if not os.path.exists(r"D:\pythontest\java"):
+    os.mkdir(r"D:\pythontest\java")
+    # with open(r"D:\pythontest\java\test.java", mode="w") as fp1:
+    #     fp1.write("hello world!")
+    get_file=os.path.join(r"D:\pythontest\java","test.java")
+    shutil.copy(r"C:\testlog.txt",r"D:\pythontest\test.java") #找不到这个目录 NotADirectoryError: [WinError 267] 目录名称无效。: 'c:\\testlog.txt'
+            #听说是不用写到文件，那么怎么确定是哪个文件呢？ #强行使用shutil.copytree()方法 没有看看其他方法是否可行
+else:   #缺少else
+    if os.path.exists(r"D:\pythontest\java\test.java"):
+        with open(r"c:\testlog.txt") as lines:
+            get_lines = lines.readlines()[2:5]
+        with open(r"D:\pythontest\java\test.java", mode="a") as fp:
+            # for i in get_lines:
+            #    fp.write(i) #write() argument must be str, not list
+            fp.writelines(get_lines) #writelines方法是可以直接写入列表的
+
