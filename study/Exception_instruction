@@ -19,7 +19,8 @@ try:
     device(1,0)
 except(AttributeError,ZeroDivisionError):
     print("这是属性的异常和除数不能够为零的异常")
-    print(sys.exc_info()) #会抛出异常类型，异常的提示语和异常的回路信息
+    print(sys.exc_info())
+    #返回的是一个元组，该元组包含的捕获异常的相关信息(异常的类型、异常的信息、异常的traceback异常追踪)
 except:
     print("表示的是捕获所有类型的异常")
     print(sys.exc_info())

@@ -16,40 +16,36 @@ s=Session()
 
 #得到所有已支付、预收费且创建时间为6月的业务订单数据
 def qingqiu(token,app_id,project_id):
-    request_url="https://stage.zhengjiajie.com/gateway?permissions_key=order_lists"
+    request_url="pass"
     data1 ={"app_id": app_id,
-    "method": "admin.order.posLists",
+    "method": "pass",
     "format": "json",
     "charset": "utf8",
-    "timestamp": "1617181937",
+    "timestamp": "pass",
     "token": token,
-    "biz_content": '{"page":1,"pagesize":100,"project_id":"%s","trade_source_tag_id":1702,'
-                   '"order_status_tag_id":684,"paid_time_begin":"2021-06-01 00:00:00",'
-                   '"paid_time_end":"2021-06-30 23:59:59"}'%project_id}
+    "biz_content": 'pass'
     return_data=s.request(method="POST",url=request_url,data=data1)
     num1=return_data.json()["content"]["count"]
     list1=[]
     for i in range(1, int(num1 / 100 + 1) + 1):
         data2 = {"app_id": app_id,
-                "method": "admin.order.posLists",
+                "method": "pass",
                 "format": "json",
                 "charset": "utf8",
-                "timestamp": "1617181937",
+                "timestamp": "pass",
                 "token": token,
-                "biz_content": '{"page":%d,"pagesize":100,"project_id":"%s","trade_source_tag_id":1702,'
-                                '"order_status_tag_id":684,"paid_time_begin":"2021-06-01 00:00:00",'
-                                '"paid_time_end":"2021-06-30 23:59:59"}'%(i,project_id)}
+                "biz_content": 'pass'
         return_num1 = s.request(method="post", url=request_url, data=data2)
         list1+=return_num1.json()["content"]["lists"]
     return list1
 #通过最基础的数据，获取到每一个业务订单的tnum，获取到每个业务订单的详情数据
 def get_tnum(token,app_id,tnum):
-    URL="https://stage.zhengjiajie.com/gateway?permissions_key=order_lists"
+    URL="pass"
     data={"app_id":app_id,
-        "method": "admin.order.posSubLists",
+        "method": "pass",
         "format": "json",
         "charset": "utf8",
-        "timestamp": "1626144161",
+        "timestamp": "pass",
         "token": token,
         # "biz_content": '{"tnum":%s}'%str(tnum)}#检查结果是数字
           "biz_content": '{"tnum":"%s"}'%tnum}  #原因就是因为第二个字典没有按照"%s"格式书写占位符的
@@ -116,9 +112,9 @@ def qitaamount_count(token,app_id,project_id,feiyong):
     return amount1
 
 if __name__ == '__main__':
-    token = "1ac00192-e971-fd2f-b336-67d26af91fc1-45d255b2-55b28613-55b28613-70952rms"
-    app_id = "GjVbGM7jnS5g"
-    project_id="134592493120808550410001"
+    token = "pass"
+    app_id = "pass"
+    project_id="pass"
     result=qingqiu(token,app_id,project_id)
     print(len(result))
     print(wuyeamount_count(token,app_id,project_id))
