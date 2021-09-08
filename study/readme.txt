@@ -7,3 +7,4 @@ xiufubuglo
   举例：比如a文件在某一分支的根目录下，然后被移动到根目录下的aa目录下，
      那么此时对于git来说，a文件就相当于删除了，所以需要用git rm <file>进行提交
    study again
+   see you again
