@@ -8,3 +8,7 @@ xiufubuglo
      那么此时对于git来说，a文件就相当于删除了，所以需要用git rm <file>进行提交
    study again
    see you again
+hello world 
+ DOVE
+ 由于忘记了，重新学习一下
+ come on orange!
